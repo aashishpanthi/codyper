@@ -10,7 +10,7 @@ const code = `await skills.get({
   "coding": 'Improve your coding skills',
   "languages": ["Python", "JavaScript", "C++", "Java"],
   steps:{
-    "1": ['Type'],
+    "1": ['TYPE'],
     "2": ['LEARN'],
     "3": ['REPEAT'],
   }
