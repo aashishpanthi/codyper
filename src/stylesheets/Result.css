@@ -1,0 +1,20 @@
+table {
+  font-size: 16pt;
+  font-weight: 800;
+  margin: auto;
+  padding: 30px 10px;
+}
+table button {
+  font-size: 21pt;
+  font-weight: bold;
+  background-color: var(--fg-color);
+  border: none;
+  padding: 5px 15px;
+  border-radius: 5px;
+  color: var(--bg-color);
+  cursor: pointer;
+  margin-top: 16px;
+}
+.wrong {
+  color: var(--hl-color);
+}

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import Code from "react-code-ui";
 import "react-code-ui/dist/index.css";
 import { StyledHeader } from "./Header.styled";
@@ -21,7 +20,9 @@ function Header() {
   return (
     <StyledHeader>
       <nav>
-        <h2>Codyper</h2>
+        <Link to="/">
+          <h2>Codyper</h2>
+        </Link>
         <Link to="/test">
           <StyledButton color={`#111`} bg={"#fff"}>
             Try It Now

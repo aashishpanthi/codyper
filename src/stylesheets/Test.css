@@ -1,0 +1,79 @@
+.test {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: 700;
+    height: 99.8%;
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+  }
+  .timer {
+    font-size: 21pt;
+    margin: 5px;
+    color: var(--hl-color);
+  }
+  .box {
+    font-size: 21pt;
+    overflow: hidden;
+    height: 93px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    user-select: none;
+  }
+  .box .word {
+    position: relative;
+    margin: 0 5px 2px;
+  }
+  .box .word.wrong {
+    text-decoration: 2px underline var(--hl-color);
+    animation: shake 0.1s ease;
+  }
+  @keyframes shake {
+    0% {
+      transform: translateX(5px);
+    }
+    50% {
+      transform: translateX(-5px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  .box .typedWord {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .box .right {
+    color: var(--fg-color);
+  }
+  .box #active {
+    position: relative;
+    width: max-content;
+  }
+  .box span.wrong {
+    color: var(--hl-color) !important;
+  }
+  .box .extra {
+    opacity: 0.6;
+  }
+  .box #caret {
+    transition: left 0.1s ease;
+    margin-left: -7.29165px;
+    position: absolute;
+    color: var(--hl-color);
+  }
+  .box #caret.blink {
+    animation: blink 1.5s infinite 1s;
+  }
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+  

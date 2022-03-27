@@ -17,6 +17,7 @@ export const StyledHeader = styled.header`
   }
 
   & nav {
+    color:#222;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -38,6 +39,7 @@ export const StyledHeader = styled.header`
     padding: 2em;
     max-width: 40rem;
     margin: 0 auto;
+    color:#222;
   }
   article h1 {
     margin: 1em 0 0;
