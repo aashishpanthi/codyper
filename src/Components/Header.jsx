@@ -1,5 +1,5 @@
 import { resetTest } from "../helpers/resetTest";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	setTime,
@@ -10,10 +10,11 @@ import {
 import { State } from "../store/reducer";
 import "../stylesheets/Header.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export const options = {
-	time: [15, 30, 45, 60, 120],
-	type: ["words", "sentences"],
+	time: [15, 30, 45, 60, 75],
+	type: ["keywords", "code"],
 };
 
 export default function Header() {
@@ -21,16 +22,34 @@ export default function Header() {
 		preferences: { timeLimit, type },
 		time: { timerId },
 	} = useSelector((state) => state);
-	const [animationProps, setAnimationProps] =
-		useState();
+
 	const dispatch = useDispatch();
 
+	const getWords = async (type) => {
+		switch(type) {
+			case "keywords":
+				import(`../wordlists/keywords.json`).then((words) =>
+						dispatch(setWordList(words.default))
+					);
+					break;
+			case "code":
+				const codeLimit = 2;
+				try{
+					const response  = await axios.get(`https://type-to-learn.hasura.app/api/rest/get-random/${codeLimit}`);
+					console.log(response)
+				}catch(e){
+					console.log(e);
+				}
+				break;
+	}
+}
+
 	useEffect(() => {
-		const type = localStorage.getItem("type") || "words";
+		const type = localStorage.getItem("type") || "keywords";
 		const time = parseInt(localStorage.getItem("time") || "60", 10);
-		import(`../helpers/${type}.json`).then((words) =>
-			dispatch(setWordList(words.default))
-		);
+
+		getWords(type);
+
 		dispatch(timerSet(time));
 		dispatch(setType(type));
 		dispatch(setTime(time));
@@ -68,7 +87,7 @@ export default function Header() {
 		}
 	}, [dispatch, type]);
 
-	const handleOptions = ({ target, clientX, clientY }) => {
+	const handleOptions = async ({ target, clientX, clientY }) => {
 		if (target instanceof HTMLButtonElement && target.dataset.option) {
 			if (target.value === timeLimit) {
 				target.blur();
@@ -79,8 +98,27 @@ export default function Header() {
 					dispatch(setTime(+target.value));
 					break;
 				case "type":
-					dispatch(setType(target.value));
-					break;
+					console.log(target.value);
+					switch(target.value){
+						case "keywords":
+							import(`../wordlists/keywords.json`).then((words) =>
+								dispatch(setWordList(words.default))
+							);
+							break;
+
+						case "code":
+							const codeLimit = 2;
+							try{
+								const response  =await axios.get(`https://type-to-learn.hasura.app/api/rest/get-random/${codeLimit}`);
+								
+								const code_snippet = response.data.code_snippet[parseInt(Math.random(0,codeLimit))].code.toString();
+								console.log(code_snippet)
+								dispatch(setWordList([code_snippet]))
+							}catch(e){
+								console.log(e);
+							}
+							break;
+					}
 			}
 			target.blur();
 		}
