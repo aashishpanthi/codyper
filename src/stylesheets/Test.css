@@ -16,7 +16,7 @@
   .box {
     font-size: 21pt;
     overflow: hidden;
-    height: 93px;
+    height: 91px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
