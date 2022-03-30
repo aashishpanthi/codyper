@@ -22,7 +22,7 @@ const TypingTest = () => {
 
   useEffect(() => {
     document.onkeydown = (e) => {
-      if (e.ctrlKey && e.key === "k") {
+      if ((e.ctrlKey || e.metaKey) && e.key === "k") {
         setShowPallet((s) => !s);
         e.preventDefault();
       } else if (

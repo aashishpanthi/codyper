@@ -5,13 +5,13 @@ import { StyledButton } from "../styled/Button/Button.styled";
 import { Link } from "react-router-dom";
 
 const code = `await skills.get({
-  "typing": 'Increase your typing speed',
+  "typing": 'Boost your typing speed',
   "coding": 'Improve your coding skills',
   "languages": ["Python", "JavaScript", "C++", "Java"],
   steps:{
-    "1": ['TYPE'],
-    "2": ['LEARN'],
-    "3": ['REPEAT'],
+    "1": ['type'],
+    "2": ['learn'],
+    "3": ['repeat'],
   }
 });
 `;
