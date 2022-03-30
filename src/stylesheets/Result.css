@@ -16,5 +16,5 @@ table button {
   margin-top: 16px;
 }
 .wrong {
-  color: var(--hl-color);
+  color: #fff;
 }

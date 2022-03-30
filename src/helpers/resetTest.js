@@ -1,5 +1,6 @@
 import { setTimerId, setWordList, timerSet } from "../store/actions";
 import { store } from "../store/store";
+import axios from "axios";
 
 export const resetTest = async () => {
 	const { dispatch, getState } = store;
@@ -14,8 +15,31 @@ export const resetTest = async () => {
 		clearInterval(timerId);
 		dispatch(setTimerId(null));
 	}
-	import(`../wordlists/${type}.json`).then((words) =>
-		dispatch(setWordList(words.default))
-	);
+	switch (type) {
+		case "keywords":
+		  import(`../wordlists/keywords.json`).then((words) =>
+			dispatch(setWordList(words.default))
+		  );
+		  break;
+
+		case "code":
+		  const codeLimit = Math.floor(Math.random() * 3) + 1 ;
+		  const codeOffset = Math.floor(Math.random() * 35) ;
+		  try {
+			const response = await axios.get(
+			  `https://type-to-learn.hasura.app/api/rest/get-code-with-offset/${codeLimit}/${codeOffset}`
+			);
+
+			const code_snippet =
+			  response.data.code_snippet[
+				parseInt(Math.random() * codeLimit)
+			  ].code.toString();
+			console.log(code_snippet);
+			dispatch(setWordList([code_snippet]));
+		  } catch (e) {
+			console.log(e);
+		  }
+		  break;
+	  }
 	dispatch(timerSet(timeLimit));
 };

@@ -27,7 +27,7 @@
     margin: 0 5px 2px;
   }
   .box .word.wrong {
-    text-decoration: 2px underline var(--hl-color);
+    text-decoration: 2px underline var(--sc-color);
     animation: shake 0.1s ease;
   }
   @keyframes shake {
@@ -54,7 +54,7 @@
     width: max-content;
   }
   .box span.wrong {
-    color: var(--hl-color) !important;
+    color: var(--sc-color) !important;
   }
   .box .extra {
     opacity: 0.6;
@@ -63,7 +63,7 @@
     transition: left 0.1s ease;
     margin-left: -7.29165px;
     position: absolute;
-    color: var(--hl-color);
+    color: var(--cu-color);
   }
   .box #caret.blink {
     animation: blink 1.5s infinite 1s;
