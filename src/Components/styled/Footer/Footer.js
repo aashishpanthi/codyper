@@ -6,7 +6,7 @@ import { ImGithub, ImInstagram, ImTwitter } from "react-icons/im";
 import { VscLocation } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 
-function Footer() {
+const Footer = ({isabout}) => {
   return (
     <StyledFooter>
       <h2>Codyper</h2>
@@ -26,10 +26,15 @@ function Footer() {
       </div>
       <ul>
         <li>
-          <Link to="/about">About Us</Link>
+          {
+            isabout ? (<Link to="/">Home</Link>) : (<Link to="/about">About Us</Link>)
+          }
         </li>
         <li>
           <Link to="/test">Test your speed</Link>
+        </li>
+        <li>
+          <a href="https://blog.aashish-panthi.com.np/introducing-codyper-learn-to-code-and-increase-typing-speed-at-once">Guide</a>
         </li>
         <li>
           <a href="https://aashishpanthi.info.np">Developer</a>

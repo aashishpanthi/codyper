@@ -9,8 +9,8 @@ const Home = () => {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <div className="appContainer">
-      <Header iscode={true}  />
-        <Footer isabout={false}/>
+        <Header iscode={false}  />
+        <Footer isabout={true}/>
       </div>
     </ThemeProvider>
   )
