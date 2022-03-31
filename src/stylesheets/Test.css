@@ -21,6 +21,7 @@
     flex-wrap: wrap;
     align-items: center;
     user-select: none;
+    font-family: monospace, sans-serif;
   }
   .box .word {
     position: relative;
@@ -61,8 +62,9 @@
   }
   .box #caret {
     transition: left 0.1s ease;
-    margin-left: -7.29165px;
+    margin-left: -5px;
     position: absolute;
+    left:0;
     color: var(--cu-color);
   }
   .box #caret.blink {

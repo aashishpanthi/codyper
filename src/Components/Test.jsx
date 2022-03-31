@@ -40,7 +40,7 @@ export default function Test() {
                     id="caret"
                     className="blink"
                     style={{
-                      left: typedWord.length * 14.5833,
+                      left: `${typedWord.length}ch`,
                     }}
                   >
                     |
